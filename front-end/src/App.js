@@ -9,11 +9,16 @@ require("dotenv").config();
 function App() {
   return (
     <div className="App">
-      <h1>Let's make a change.</h1>
-      <Comments />
-      <Home />
-      <NewBlog />
-      <Show />
+      <nav>
+        <div className="nav-links">
+          <Link className="nav-links-for-css" to ='/'>Home</Link>
+          <Link className="nav-links-for-css" to ='/newblog'>Create New Blog</Link>
+        </div>
+      </nav>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/newblog' component={NewBlog}/>
+      </Switch>
     </div>
   );
 }
