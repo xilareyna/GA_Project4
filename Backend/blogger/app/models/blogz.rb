@@ -1,0 +1,2 @@
+class Blogz < ApplicationRecord
+end
