@@ -1,2 +1,72 @@
   [1m[35m (652.3ms)[0m  [1m[35mCREATE DATABASE "blog_development" ENCODING = 'unicode'[0m
   [1m[35m (393.0ms)[0m  [1m[35mCREATE DATABASE "blog_test" ENCODING = 'unicode'[0m
+  [1m[35m (168.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(892336952976185220)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBlogzs (20210120161943)
+  [1m[36mTRANSACTION (16.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "blogzs" ("id" bigserial primary key, "title" character varying, "content" character varying, "author" character varying, "img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (29.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120161943"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20210120162128)
+  [1m[36mTRANSACTION (19.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "name" character varying, "email" character varying, "ideas" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (23.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120162128"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-20 16:23:32.989900"], ["updated_at", "2021-01-20 16:23:32.989900"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(892336952976185220)[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (29.7ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-20 16:36:11.375087"], ["updated_at", "2021-01-20 16:36:11.375087"]]
+  [1m[36mTRANSACTION (16.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (26.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (26.3ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-20 16:37:23.877367"], ["updated_at", "2021-01-20 16:37:23.877367"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (1.2ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-20 16:38:02.276380"], ["updated_at", "2021-01-20 16:38:02.276380"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBlogz Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "blogzs" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBlogz Load (0.7ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  [1m[36mComment Exists? (6.0ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (3.3ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-20 16:41:19.247067"], ["updated_at", "2021-01-20 16:41:19.247067"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mComment Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (18.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (1.2ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-20 16:44:14.649656"], ["updated_at", "2021-01-20 16:44:14.649656"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mComment Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBlogz Load (0.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBlogz Load (20.0ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Exists? (30.4ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."blogz_id" = $1 LIMIT $2[0m  [["blogz_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(892336952976185220)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToBlogz (20210120165409)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (38.9ms)[0m  [1m[35mALTER TABLE "comments" ADD "blogz_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120165409"]]
+  [1m[36mTRANSACTION (28.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(892336952976185220)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBlogz Load (1.0ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."blogz_id" = $1 LIMIT $2[0m  [["blogz_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Load (0.9ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Create (9.9ms)[0m  [1m[32mINSERT INTO "comments" ("name", "email", "ideas", "created_at", "updated_at", "blogz_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "xila"], ["email", "aasdas@gmail.com"], ["ideas", "afasd"], ["created_at", "2021-01-20 16:58:21.496666"], ["updated_at", "2021-01-20 16:58:21.496666"], ["blogz_id", 1]]
+  [1m[36mTRANSACTION (57.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mComment Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (32.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mBlogz Load (16.0ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Exists? (46.7ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."blogz_id" = $1 LIMIT $2[0m  [["blogz_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]

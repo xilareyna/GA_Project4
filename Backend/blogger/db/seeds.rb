@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ 
+Blogz.create([
+    {title: "winter trees arent cute", content: "ewrnlearnwelrknwewlerwe is how winter trees make me feel", author: "Xila Reyna", img: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"  }
+])
+
+Comment.create([
+    {name: "Candice Sambury", email: "candices@email.com",ideas:"I disagree, winter trees are lovely"}
+])
