@@ -5,7 +5,7 @@ class BlogzsController < ApplicationController
   def index
     @blogzs = Blogz.all
 
-    render json: @blogzs
+    render json: @blogzs.to_json(include: :comments)
   end
 
   # GET /blogzs/1
@@ -46,6 +46,6 @@ class BlogzsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blogz_params
-      params.require(:blogz).permit(:name, :title, :content, :author, :img)
+      params.require(:blogz).permit(:title, :content, :author, :img)
     end
 end
