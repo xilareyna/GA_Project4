@@ -2226,3 +2226,678 @@ Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.4ms | Allocations: 947)
 Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 2.4ms | Allocations: 1670)
 
 
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE DATABASE "blog_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "blog_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(892336952976185220)[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(892336952976185220)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlogz Create (8.0ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "winter trees arent cute"], ["content", "ewrnlearnwelrknwewlerwe is how winter trees make me feel"], ["author", "Xila Reyna"], ["img", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/twisting-winter-trees-in-forest-canopy-with-bare-branches-philip-openshaw.jpg"], ["created_at", "2021-01-22 14:53:19.723376"], ["updated_at", "2021-01-22 14:53:19.723376"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/blogzs" for ::1 at 2021-01-22 09:54:14 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.6ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 63ms (Views: 0.2ms | ActiveRecord: 11.6ms | Allocations: 15384)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 09:54:17 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 09:54:17 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mBlogz Load (1.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 1185)
+
+
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 31ms (Views: 18.6ms | ActiveRecord: 12.3ms | Allocations: 3726)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 09:54:23 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.9ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 2143)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 09:54:26 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Started GET "/blogzs/1" for ::1 at 2021-01-22 09:54:26 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (6.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 7.5ms | ActiveRecord: 6.6ms | Allocations: 1039)
+
+
+  [1m[36mBlogz Load (6.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 6.8ms | Allocations: 1456)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 09:54:32 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 2095)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 09:54:50 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 09:54:50 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.6ms | Allocations: 878)
+
+
+  [1m[36mBlogz Load (0.7ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1401)
+
+
+Started POST "/blogzs/1/comments" for ::1 at 2021-01-22 09:54:59 -0500
+Processing by CommentsController#create as */*
+  Parameters: {"name"=>"Test", "email"=>"test@test.com", "ideas"=>"test", "blogz_id"=>"1", "comment"=>{"name"=>"Test", "email"=>"test@test.com", "ideas"=>"test"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mBlogz Load (0.3ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mComment Create (2.8ms)[0m  [1m[32mINSERT INTO "comments" ("name", "email", "ideas", "created_at", "updated_at", "blogz_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Test"], ["email", "test@test.com"], ["ideas", "test"], ["created_at", "2021-01-22 14:54:59.861975"], ["updated_at", "2021-01-22 14:54:59.861975"], ["blogz_id", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+Completed 201 Created in 36ms (Views: 0.5ms | ActiveRecord: 9.1ms | Allocations: 7724)
+
+
+Started GET "/blogzs/1" for ::1 at 2021-01-22 09:55:30 -0500
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 09:55:30 -0500
+Processing by BlogzsController#show as */*
+Processing by CommentsController#index as */*
+  Parameters: {"id"=>"1"}
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mBlogz Load (0.6ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.6ms | Allocations: 1187)
+
+
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 1383)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 09:55:39 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 2215)
+
+
+Started GET "/blogzs/1" for ::1 at 2021-01-22 09:57:24 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 09:57:24 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mBlogz Load (1.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 1.8ms | Allocations: 1094)
+
+
+  [1m[36mComment Load (4.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 8.8ms | ActiveRecord: 4.6ms | Allocations: 1583)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 09:57:26 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 28ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 2217)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:02:19 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 2212)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:10:23 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:10:23 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[36mBlogz Load (0.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 52ms (Views: 47.7ms | ActiveRecord: 15.7ms | Allocations: 5529)
+
+
+Completed 200 OK in 50ms (Views: 0.5ms | ActiveRecord: 16.0ms | Allocations: 5495)
+
+
+Started POST "/blogzs" for ::1 at 2021-01-22 10:10:42 -0500
+Processing by BlogzsController#create as */*
+  Parameters: {"title"=>"test", "content"=>"test", "author"=>"test", "img"=>"test", "blogz"=>{"title"=>"test", "content"=>"test", "author"=>"test", "img"=>"test"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/blogzs_controller.rb:20:in `create'
+  [1m[36mBlogz Create (1.5ms)[0m  [1m[32mINSERT INTO "blogzs" ("title", "content", "author", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "test"], ["content", "test"], ["author", "test"], ["img", "test"], ["created_at", "2021-01-22 15:10:42.339085"], ["updated_at", "2021-01-22 15:10:42.339085"]]
+  ↳ app/controllers/blogzs_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/blogzs_controller.rb:20:in `create'
+Completed 201 Created in 8ms (Views: 0.6ms | ActiveRecord: 2.3ms | Allocations: 2083)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:10:44 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 4.3ms | Allocations: 2999)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:10:46 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 730)
+
+
+Started GET "/blogzs/3" for ::1 at 2021-01-22 10:10:46 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mBlogz Load (0.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.8ms | Allocations: 634)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:10:50 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.7ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 2981)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:10:57 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:10:57 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 1.1ms | Allocations: 1025)
+
+
+  [1m[36mBlogz Load (2.0ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.2ms | Allocations: 1519)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:11:53 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.6ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 2984)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:11:56 -0500
+Started GET "/blogzs/3" for ::1 at 2021-01-22 10:11:56 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[36mBlogz Load (2.9ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.9ms | Allocations: 1179)
+
+
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 1.2ms | Allocations: 1566)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:11:58 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (3.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 2981)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:12:26 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 2981)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:12:41 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 2981)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:13:17 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 2981)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:13:32 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 1.0ms | Allocations: 730)
+
+
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:13:32 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 638)
+
+
+Started POST "/blogzs/1/comments" for ::1 at 2021-01-22 10:13:51 -0500
+Processing by CommentsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test", "ideas"=>"test", "blogz_id"=>"1", "comment"=>{"name"=>"test", "email"=>"test", "ideas"=>"test"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("name", "email", "ideas", "created_at", "updated_at", "blogz_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["email", "test"], ["ideas", "test"], ["created_at", "2021-01-22 15:13:51.303769"], ["updated_at", "2021-01-22 15:13:51.303769"], ["blogz_id", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+Completed 201 Created in 20ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 2681)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:13:52 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:13:52 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1121)
+
+
+  [1m[36mBlogz Load (1.6ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 1635)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:14:41 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.3ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 1.5ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:16:54 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:16:54 -0500
+  [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 2.2ms | Allocations: 1511)
+
+
+  [1m[36mBlogz Load (4.9ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 4.9ms | Allocations: 1062)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:16:55 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:18:36 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:18:36 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (4.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 4.8ms | Allocations: 1382)
+
+
+  [1m[36mBlogz Load (2.2ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 1629)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:18:49 -0500
+Processing by CommentsController#index as */*
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:18:49 -0500
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 2.1ms | Allocations: 1128)
+
+
+  [1m[36mBlogz Load (2.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 2.8ms | Allocations: 1670)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:19:11 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:19:11 -0500
+Processing by CommentsController#index as */*
+Processing by BlogzsController#show as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  Parameters: {"id"=>"1"}
+  [1m[36mBlogz Load (0.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 696)
+
+
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.6ms | Allocations: 1746)
+
+
+Started GET "/blogzs/1/comments" for ::1 at 2021-01-22 10:20:03 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"1"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 846)
+
+
+Started GET "/blogzs/1/comments" for ::1 at 2021-01-22 10:20:07 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"1"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 846)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:22:34 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 3099)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:22:37 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (1.0ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:22:38 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:22:38 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[36mBlogz Load (1.7ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms | Allocations: 964)
+
+
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.7ms | Allocations: 1670)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:22:41 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:22:47 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 846)
+
+
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:22:47 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mBlogz Load (0.3ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 638)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:23:06 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:23:11 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:23:11 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 2.6ms | Allocations: 1131)
+
+
+  [1m[36mBlogz Load (1.7ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.7ms | Allocations: 1630)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:23:19 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 3100)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:23:22 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:23:22 -0500
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+Processing by CommentsController#index as */*
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mBlogz Load (0.4ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 961)
+
+
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.8ms | Allocations: 1493)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:23:24 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.5ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 3099)
+
+
+Started GET "/blogzs/undefined/comments" for ::1 at 2021-01-22 10:24:25 -0500
+Started GET "/blogzs/1" for ::1 at 2021-01-22 10:24:25 -0500
+Processing by CommentsController#index as */*
+Processing by BlogzsController#show as */*
+  Parameters: {"id"=>"1"}
+  Parameters: {"blogz_id"=>"undefined"}
+  [1m[36mBlogz Load (0.9ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs" WHERE "blogzs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/blogzs_controller.rb:44:in `set_blogz'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 772)
+
+
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 1.1ms | Allocations: 1687)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:24:26 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (0.8ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 3099)
+
+
+Started GET "/blogzs" for ::1 at 2021-01-22 10:24:27 -0500
+Processing by BlogzsController#index as */*
+  [1m[36mBlogz Load (1.3ms)[0m  [1m[34mSELECT "blogzs".* FROM "blogzs"[0m
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 1]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 2]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."blogz_id" = $1[0m  [["blogz_id", 3]]
+  ↳ app/controllers/blogzs_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 3099)
+
+

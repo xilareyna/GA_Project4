@@ -25,13 +25,13 @@ const Show = (props) => {
   }, []);
 
   return (
-    <>
+    <div className="show-container">
       <h2>{blogPost.title}</h2>
       <p>{blogPost.author}</p>
       <img src={blogPost.img} alt={blogPost.title} className="blog-post-img" />
       <p>{blogPost.content}</p>
       <Comments blogPost={blogPost} />
-    </>
+    </div>
   );
 };
 

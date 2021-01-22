@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: "Itim, cursive",
     fontSize: "40px",
+    marginBottom: "0"
   },
   paper: {
     width: "100%",
