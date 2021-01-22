@@ -1,7 +1,52 @@
 import { useState, useEffect, useRef } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 // add comments form for the show route
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+  blogPostButton: {
+    border: "none",
+    fontSize: "30px",
+    backgroundColor: "darkorange",
+    color: "white",
+  },
+  inputFields: {},
+  h2: {
+    textAlign: "center",
+    fontFamily: "Itim, cursive",
+    fontSize: "40px",
+  },
+  paper: {
+    width: "100%",
+  },
+  NewCommentContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "40px",
+  },
+  video: {
+    objectFit: "cover",
+    width: "100vw",
+    height: "100vh",
+    position: "fixed",
+    top: "0",
+    left: "0",
+    zIndex: "-1",
+    opacity: "0.7",
+  },
+}));
+
 const Comments = ({ blogPost }) => {
+  const classes = useStyles();
   const [comments, setComments] = useState([]);
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -60,48 +105,62 @@ const Comments = ({ blogPost }) => {
 
   return (
     <>
-      <h4>New Comment</h4>
-      <div className="create-new-comment-container">
-        <form onSubmit={createNewComment}>
-          <label>Name</label>
-          <input
-            type="text"
-            id="name"
-            className="comment-name-input"
-            value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
-          />
-          <label>Email</label>
-          <input
-            type="text"
-            id="email"
-            className="comment-email-input"
-            value={emailInput}
-            onChange={(e) => setEmailInput(e.target.value)}
-          />
-          <label>Ideas</label>
-          <input
-            type="text"
-            id="ideas"
-            className="comment-ideas-input"
-            value={ideasInput}
-            onChange={(e) => setIdeasInput(e.target.value)}
-          />
-
-          <input type="submit" value="Post" className="comment-create-button" />
-        </form>
-      </div>
-      {comments
-        ? comments.map((comment, index) => {
-            return (
-              <div>
-                <h2>{comment.name}</h2>
-                <p>{comment.ideas}</p>
-                <p>{comment.email}</p>
-              </div>
-            );
-          })
-        : "No comments yet..."}
+      <Paper elevation={3} className={classes.paper}>
+        <h2 className={classes.h2}>New Comment</h2>
+        <div className={classes.NewCommentContainer}>
+          <div className={classes.inputFields}>
+            <form
+              onSubmit={createNewComment}
+              className={classes.root}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                id="name"
+                label="Name"
+                variant="filled"
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
+              />
+              <TextField
+                id="email"
+                label="Email"
+                variant="filled"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+              />
+              <TextField
+                id="ideas"
+                label="Ideas"
+                variant="filled"
+                value={ideasInput}
+                onChange={(e) => setIdeasInput(e.target.value)}
+              />
+              <Button
+                variant="outlined"
+                style={{
+                  backgroundColor: "darkorange",
+                  marginLeft: "125px",
+                }}
+              >
+                <input
+                  type="submit"
+                  value="Post"
+                  className={classes.blogPostButton}
+                />
+              </Button>
+            </form>
+          </div>
+        </div>
+      </Paper>
+      <video
+        className={classes.video}
+        playsinline
+        autoPlay
+        muted
+        loop
+        src="https://storage.coverr.co/videos/f006BNNyXdkcTJxvmM3yumznlBKS00RdQ4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjExMzA4MTQ0fQ.eh4sgSzF8ahuhlztyvO_FhDTtBLuO5KfuKe27lbyyrg"
+      ></video>
     </>
   );
 };
