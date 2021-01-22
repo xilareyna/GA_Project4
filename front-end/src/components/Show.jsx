@@ -11,7 +11,7 @@ const Show = (props) => {
   const getBlogPost = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/blogzs/${props.match.params.id}`
+        `https://sounding-board.herokuapp.com/blogzs/${props.match.params.id}`
       );
       const json = await res.json();
       setBlogPost(json);

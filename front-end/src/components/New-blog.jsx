@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     marginTop: "40px",
-    textAlign: "center"
+    textAlign: "center",
   },
   video: {
     objectFit: "cover",
@@ -75,13 +75,16 @@ const NewBlog = () => {
     });
     e.currentTarget.reset();
     try {
-      const response = await fetch("http://localhost:3000/blogzs", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: newBlogPost,
-      });
+      const response = await fetch(
+        "https://sounding-board.herokuapp.com/blogzs",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: newBlogPost,
+        }
+      );
       const data = await response.json();
       let allBlogs = [...blogPost, data];
       // Please test this.
@@ -135,7 +138,8 @@ const NewBlog = () => {
                 variant="filled"
                 value={imgInput}
                 onChange={(e) => setImgInput(e.target.value)}
-              /><br/>
+              />
+              <br />
               <Button
                 variant="outlined"
                 style={{
@@ -148,7 +152,7 @@ const NewBlog = () => {
                   value="Post"
                   className={classes.blogPostButton}
                 />
-              </Button> 
+              </Button>
             </form>
           </div>
         </Paper>
