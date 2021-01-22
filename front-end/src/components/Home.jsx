@@ -13,7 +13,7 @@ const Home = () => {
   // INDEX / GET
   const getBlogPosts = async () => {
     try {
-      const res = await fetch("http://localhost:3000/blogzs");
+      const res = await fetch("https://sounding-board.herokuapp.com/blogzs");
       const json = await res.json();
       setBlogPosts(json);
     } catch (err) {

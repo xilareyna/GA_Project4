@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: "Itim, cursive",
     fontSize: "40px",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   paper: {
     width: "100%",
@@ -57,7 +57,7 @@ const Comments = ({ blogPost }) => {
   const getComments = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/blogzs/${blogPost.id}/comments`
+        `https://sounding-board.herokuapp.com/blogzs/${blogPost.id}/comments`
       );
       const json = await res.json();
       setComments(json);
@@ -82,7 +82,7 @@ const Comments = ({ blogPost }) => {
     e.currentTarget.reset();
     try {
       const response = await fetch(
-        `http://localhost:3000/blogzs/${blogPost.id}/comments`,
+        `https://sounding-board.herokuapp.com/blogzs/${blogPost.id}/comments`,
         {
           method: "POST",
           headers: {
