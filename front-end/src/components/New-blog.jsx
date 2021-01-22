@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     marginTop: "40px",
+    textAlign: "center"
   },
   video: {
     objectFit: "cover",
@@ -134,12 +135,12 @@ const NewBlog = () => {
                 variant="filled"
                 value={imgInput}
                 onChange={(e) => setImgInput(e.target.value)}
-              />
+              /><br/>
               <Button
                 variant="outlined"
                 style={{
                   backgroundColor: "darkorange",
-                  marginLeft: "125px",
+                  marginTop: "10px",
                 }}
               >
                 <input
@@ -147,7 +148,7 @@ const NewBlog = () => {
                   value="Post"
                   className={classes.blogPostButton}
                 />
-              </Button>
+              </Button> 
             </form>
           </div>
         </Paper>

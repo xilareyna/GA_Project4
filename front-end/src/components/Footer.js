@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     marginLeft: "40px",
   },
   footerDiv: {
-    position: "absolute",
+    position: "relative",
     bottom: "0",
   },
 });
